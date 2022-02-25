@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -37,6 +39,32 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ecommapi',
+    'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication'
+        # 'rest_framework.authentication.TokenAuthentication'
+    ],
+}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://www.website.com",
+    "http://localhost:3000",
+    "http://localhost:4200",
+    "https://web.postman.co",
+]
+
+CORS_ALLOW_METHODS = [
+    "GET",
+    "PUT",
+    "DELETE",
+    "POST",
 ]
 
 MIDDLEWARE = [
@@ -118,3 +146,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_ROOT = BASE_DIR / "static"
+STATICFILES_DIRS = [
+    "restAPIecomm/static",
+]
+
+# media files configuration
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
