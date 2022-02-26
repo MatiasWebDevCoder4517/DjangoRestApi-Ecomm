@@ -1,3 +1,0 @@
-1. understand how to create auth tokens   third and last tutorial -----> python manage.py drf_create_token {username}
-2. OCUPAR LINK -----> https://inspector.swagger.io/builder    PARA TESTEAR APIS
-
